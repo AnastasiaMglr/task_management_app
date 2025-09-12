@@ -12,7 +12,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20.19.0'
       - run: npm install
         working-directory: ./task-manager-backend
       - run: npm run build # si tu as un build step
