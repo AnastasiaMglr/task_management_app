@@ -10,7 +10,7 @@ function Dashboard() {
   const fetchTasks = async () => {
     try {
       console.log('getTasks start')
-      const res = await axios.get('http://localhost:5000/tasks', { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/tasks`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
       setTasks(res.data)
     } catch (err) {
       const errorMessage = err.response?.data?.message || err.message
@@ -26,7 +26,7 @@ function Dashboard() {
   const toggleTask = async (taskId, currentState) => {
     try {
       await axios.put(
-        `http://localhost:5000/tasks/${taskId}`,
+        `${import.meta.env.VITE_API_URL}/tasks/${taskId}`,
         { completed: !currentState },
         { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
       )
@@ -39,7 +39,7 @@ function Dashboard() {
   const handleAddTask = async (e) => {
     e.preventDefault()
     try {
-      await axios.post('http://localhost:5000/tasks',
+      await axios.post(`${import.meta.env.VITE_API_URL}/tasks`,
         { title: newTask }, // <-- adapté à ton backend (ajuste si le champ est différent)
         { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
       )
@@ -55,7 +55,7 @@ function Dashboard() {
 
     const handleDelTask = async (taskId) => {
     try {
-      await axios.delete(`http://localhost:5000/tasks/${taskId}`,
+      await axios.delete(`${import.meta.env.VITE_API_URL}/tasks/${taskId}`,
         { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
       )
       fetchTasks()

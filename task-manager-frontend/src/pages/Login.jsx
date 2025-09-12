@@ -11,7 +11,7 @@ function Login() {
     e.preventDefault()
     try {
       console.log('login start')
-      const res = await axios.post('http://localhost:5000/auth/login', { email, password })
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, { email, password })
       console.log(res.data)
       localStorage.setItem('token', res.data.token)
       navigate('/dashboard') // redirige vers la page Dashboard
