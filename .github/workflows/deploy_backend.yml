@@ -11,14 +11,14 @@ jobs:
       - uses: actions/checkout@v3
       - name: Setup Node.js
         uses: actions/setup-node@v3
-        working-directory: ./task-manager-backend
         with:
           node-version: '18'
       - run: npm install
+        working-directory: ./task-manager-backend
       - run: npm run build # si tu as un build step
+        working-directory: ./task-manager-backend
       - name: Deploy to Render
         uses: render-examples/deploy-action@v1
-        working-directory: ./task-manager-backend
         with:
           api_key: ${{ secrets.RENDER_API_KEY }}
           service_id: ${{ secrets.RENDER_SERVICE_ID }}
