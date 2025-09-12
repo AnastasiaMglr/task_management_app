@@ -81,7 +81,7 @@ function Dashboard() {
     ))}
 
       <button onClick={() => setShowForm(!showForm)}>
-        {showForm ? "Annuler" : "Ajouter une tâche"}
+        {showForm ? "Cancel" : "Add task"}
       </button>
 
       {showForm && (
@@ -90,7 +90,7 @@ function Dashboard() {
             type="text"
             value={newTask}
             onChange={(e) => setNewTask(e.target.value)}
-            placeholder="Nom de la tâche"
+            placeholder="Task Name"
             required
           />
           <button type="submit">Enregistrer</button>
